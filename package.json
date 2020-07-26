@@ -5,16 +5,18 @@
   "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "got": "^11.5.1",
-    "node-fetch": "^2.6.0"
+    "got": "^11.5.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^8.0.1"
+    "codecov": "^3.7.2",
+    "mocha": "^8.0.1",
+    "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "nyc npm run test"
   },
   "keywords": [
     "currency",

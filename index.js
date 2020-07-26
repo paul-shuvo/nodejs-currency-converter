@@ -20,7 +20,6 @@ class CurrencyConverter {
         "BZD": "Belize Dollar",
         "BMD": "Bermudan Dollar",
         "BTN": "Bhutan currency",
-        "XBT": "Bitcoin Cash",
         "BOB": "Bolivian Boliviano",
         "BAM": "Bosnia-Herzegovina Convertible Mark",
         "BWP": "Botswanan Pula",
@@ -107,7 +106,7 @@ class CurrencyConverter {
         "PYG ": "Paraguayan Guarani",
         "PHP": "Philippine peso",
         "PLN": "Poland Złoty",
-        "EGP": "Pound sterling",
+        "GBP": "Pound sterling",
         "QAR": "Qatari Rial",
         "RON": "Romania n Leu",
         "RUB": "Russian Ruble",
@@ -154,7 +153,7 @@ class CurrencyConverter {
         "TWD": "NT$",
         "PEN": "Peruvian Sol"
     }
-    currencyCode = ["AFN", "ALL", "DZD", "AOA", "ARS", "AMD", "AWG", "AUD", "AZN", "BSD", "BHD", "BBD", "BDT", "BYR", "BZD", "BMD", "BTN", "XBT", "BOB", "BAM", "BWP", "BRL", "BND", "BGN", "BIF", "XPF", "KHR ", "CAD", "CVE", "KYD", "FCFA", "CLP", "CLF", "CNY", "CNY", "COP", "CF", "CDF", "CRC", "HRK", "CUC", "CZK", "DKK", "DJF", "DOP", "XCD", "EGP", "ETB", "FJD", "GMD", "GBP", "GEL", "GHS", "GTQ", " GNF", "GYD", "HTG", "HNL", "HKD", "HUF", "ISK", "INR", "IDR", "IRR", "IQD", "ILS", "JMD", "JPY", "JOD", "KZT", "KES", "KWD", "KGS", "LAK", "LBP", "LSL", "LRD", "LYD", "MOP", "MKD", "MGA" , "MWK", "MYR", "MVR", "MRO", "MUR", "MXN", "MDL", "MAD", "MZN", "MMK", "NAD", "NPR", "ANG", "NZD", "NIO", "NGN", "NOK", "OMR", "PKR", "PAB", "PGK", "PYG ", "PHP", "PLN", "EGP", "QAR", " RON", "RUB", "RWF", "SVC", "SAR", "RSD", "SCR", "SLL", "SGD", "SBD", "SOS", "ZAR", "KRW", "VES", "LKR", "SDG", "SRD", "SZL", "SEK", "CHF", "TJS", "TZS", "THB", "TOP", "TTD", "TND", "TRY" , "TMT", "UGX", "UAH", "AED", "USD", "UYU", "UZS", "VND", "XOF", "YER", "ZMW", "XBT", "ETH", "EUR", "LTC", "TWD", "PEN"]
+    currencyCode = ["AFN", "ALL", "DZD", "AOA", "ARS", "AMD", "AWG", "AUD", "AZN", "BSD", "BHD", "BBD", "BDT", "BYR", "BZD", "BMD", "BTN", "XBT", "BOB", "BAM", "BWP", "BRL", "BND", "BGN", "BIF", "XPF", "KHR ", "CAD", "CVE", "KYD", "FCFA", "CLP", "CLF", "CNY", "CNY", "COP", "CF", "CDF", "CRC", "HRK", "CUC", "CZK", "DKK", "DJF", "DOP", "XCD", "EGP", "ETB", "FJD", "GMD", "GBP", "GEL", "GHS", "GTQ", " GNF", "GYD", "HTG", "HNL", "HKD", "HUF", "ISK", "INR", "IDR", "IRR", "IQD", "ILS", "JMD", "JPY", "JOD", "KZT", "KES", "KWD", "KGS", "LAK", "LBP", "LSL", "LRD", "LYD", "MOP", "MKD", "MGA" , "MWK", "MYR", "MVR", "MRO", "MUR", "MXN", "MDL", "MAD", "MZN", "MMK", "NAD", "NPR", "ANG", "NZD", "NIO", "NGN", "NOK", "OMR", "PKR", "PAB", "PGK", "PYG ", "PHP", "PLN", "QAR", " RON", "RUB", "RWF", "SVC", "SAR", "RSD", "SCR", "SLL", "SGD", "SBD", "SOS", "ZAR", "KRW", "VES", "LKR", "SDG", "SRD", "SZL", "SEK", "CHF", "TJS", "TZS", "THB", "TOP", "TTD", "TND", "TRY" , "TMT", "UGX", "UAH", "AED", "USD", "UYU", "UZS", "VND", "XOF", "YER", "ZMW", "ETH", "EUR", "LTC", "TWD", "PEN"]
 
     constructor(params) {
         this.currencyFrom = ""
@@ -163,19 +162,19 @@ class CurrencyConverter {
         this.convertedValue = 0
 
         if(params != undefined){
-            if(params["from"] != undefined)
+            if(params["from"] !== undefined)
                 this.from(params["from"])
 
-            if(params["to"] != undefined)
+            if(params["to"] !== undefined)
                 this.to(params["to"])
             
-            if(params["amount"] != undefined)
+            if(params["amount"] !== undefined)
                 this.amount(params["amount"])
         }
 
     }
     from (currencyFrom) {
-        if(typeof currencyFrom != "string")
+        if(typeof currencyFrom !== "string")
             throw new TypeError("currency code should be a string")
             
         if(!this.currencyCode.includes(currencyFrom.toUpperCase()))
@@ -185,7 +184,7 @@ class CurrencyConverter {
         return this
     }
     to (currencyTo) {
-        if(typeof currencyTo != "string")
+        if(typeof currencyTo !== "string")
             throw new TypeError("currency code should be a string")
 
         if(!this.currencyCode.includes(currencyTo.toUpperCase()))
@@ -195,7 +194,7 @@ class CurrencyConverter {
         return this
     }
     amount (currencyAmount){
-        if(typeof currencyAmount != "number")
+        if(typeof currencyAmount !== "number")
             throw new TypeError("amount should be a number")
 
         if(currencyAmount <= 0)
@@ -206,32 +205,45 @@ class CurrencyConverter {
     }
 
     rates(){
-        return got(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
-            .then((html) => {return cheerio.load(html.body)})
-            .then(($) => {return $(".iBp4i").text().split(" ")[0]})
-            .then(rates => {
-                return parseFloat(rates)
-        })
+        if(this.currencyFrom === this.currencyTo)
+            return new Promise((resolve, _) => {resolve(1) })
+        else    
+            return got(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
+                .then((html) => {return cheerio.load(html.body)})
+                .then(($) => {return $(".iBp4i").text().split(" ")[0]})
+                .then((rates) => {
+                    return parseFloat(rates)
+            })
     }
 
     convert(currencyAmount){
-        if(currencyAmount != undefined){
+        if(currencyAmount !== undefined){
             this.amount(currencyAmount)
         }
 
         if(this.currencyFrom == "")
-            throw new ReferenceError("currency code cannot be an empty string")
+            throw new Error("currency code cannot be an empty string")
 
         if(this.currencyTo == "")
-            throw new ReferenceError("currency code cannot be an empty string")
+            throw new Error("currency code cannot be an empty string")
 
         if(this.currencyAmount == 0)
-            throw new ReferenceError("currency amount should be a positive value")
+            throw new Error("currency amount should be a positive value")
 
         return this.rates().then((rates) =>{
             this.convertedValue = rates * this.currencyAmount
             return this.convertedValue
         })
+    }
+
+    currencyName(currencyCode_){
+        if(typeof currencyCode_ != "string")
+            throw new TypeError("currency code should be a string")
+        
+        if(!this.currencyCode.includes(currencyCode_.toUpperCase()))
+            throw new Error(`${currencyCode_} is not a valid currency code`)
+
+        return this.currencies[currencyCode_]
     }
   }
 
