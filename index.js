@@ -168,7 +168,6 @@ class CurrencyConverter {
         }
     }
     from (currencyFrom) {
-
         if(typeof currencyFrom != "string")
             throw new TypeError("currency code should be a string")
             
@@ -179,7 +178,6 @@ class CurrencyConverter {
         return this
     }
     to (currencyTo) {
-
         if(typeof currencyTo != "string")
             throw new TypeError("currency code should be a string")
 
@@ -190,7 +188,6 @@ class CurrencyConverter {
         return this
     }
     amount (currencyAmount){
-
         if(typeof currencyAmount != "number")
             throw new TypeError("amount should be a number")
 
@@ -201,6 +198,15 @@ class CurrencyConverter {
         return this
     }
     convert(){
+        if(this.currencyFrom == "")
+            throw new ReferenceError('currency code cannot be an empty string')
+
+        if(this.currencyTo == "")
+            throw new ReferenceError('currency code cannot be an empty string')
+
+        if(this.currencyAmount == 0)
+            throw new ReferenceError('currency amount should be a positive value')
+
         return got(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
             .then((html) => {return cheerio.load(html.body)})
             .then(($) => {return $('.iBp4i').text().split(' ')[0]})

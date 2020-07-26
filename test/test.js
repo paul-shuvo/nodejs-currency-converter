@@ -1,6 +1,6 @@
 const assert = require('chai').assert
 const expect = require('chai').expect
-const cc = require('../cc_lib.js')
+const cc = require('../index.js')
 
 let currencyConverter = new cc()
 
@@ -54,6 +54,23 @@ describe('currencyConverter', function () {
 
         it('should throw an Error', function () {
             expect(() => currencyConverter.amount(-1)).to.throw(Error);
+        })
+    })
+
+    describe('convert', function () {
+        it('should throw an Error', function () {
+            currencyConverter.currencyFrom = ""
+            expect(() => currencyConverter.convert()).to.throw(ReferenceError)
+        })
+
+        it('should throw an Error', function () {
+            currencyConverter.currencyTo = ""
+            expect(() => currencyConverter.convert()).to.throw(ReferenceError)
+        })
+
+        it('should throw an Error', function () {
+            currencyConverter.currencyAmount = 0
+            expect(() => currencyConverter.convert()).to.throw(ReferenceError)
         })
     })
 })

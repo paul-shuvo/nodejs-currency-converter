@@ -1,8 +1,8 @@
 {
-  "name": "cc_lib",
-  "version": "1.0.0",
+  "name": "currency-converter-nodejs",
+  "version": "0.5.0",
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
-  "main": "cc_lib.js",
+  "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.5.1",
