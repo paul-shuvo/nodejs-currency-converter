@@ -1,6 +1,7 @@
 <div align="center">
 
-[![Build Status](https://travis-ci.com/paul-shuvo/nodejs-currency-converter.svg?branch=master)](https://travis-ci.com/paul-shuvo/nodejs-currency-converter) [![Known Vulnerabilities](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter?targetFile=package.json) ![license: MIT](https://img.shields.io/npm/l/vue.svg)
+[![Build Status](https://travis-ci.com/paul-shuvo/nodejs-currency-converter.svg?branch=master)](https://travis-ci.com/paul-shuvo/nodejs-currency-converter) [![Known Vulnerabilities](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter?targetFile=package.json) ![license: MIT](https://img.shields.io/npm/l/vue.svg) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/daac5335a1d64af3afee06813f6cf243)](https://www.codacy.com/manual/paul-shuvo/nodejs-currency-converter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=paul-shuvo/nodejs-currency-converter&amp;utm_campaign=Badge_Grade)
+
 # NodeJS Currency Converter
 </div>
 
