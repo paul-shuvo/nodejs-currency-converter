@@ -12,10 +12,16 @@
 
 ### Installation
 
-This package can be installed using npm
+This package can be installed using `npm`
 
 ```bash
 npm install currency-converter-lt
+```
+
+or, `yarn`
+
+```bash
+yarn add currency-converter-lt
 ```
 
 ### Usage
@@ -69,6 +75,8 @@ currencyConverter.from("USD").to("GBP").amount(125).convert().then((response) =>
     console.log(response) //or do something else
 })
 ```
+
+
 
 ## Issues
 

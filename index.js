@@ -1,6 +1,8 @@
 const cheerio = require("cheerio")
 const got = require("got")
 
+// FIXME: round upto 2 decimal places
+// TODO: Add doc for other functions
 class CurrencyConverter {
     currencies = {
         "AFN": "Afghan Afghani",
