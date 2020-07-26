@@ -5,11 +5,13 @@ node_js:
 install:
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
   - nvm install v12.16.3
+  - npm update
   - npm install 
 script:
   - npm test
 after_success:
   - npm run report-coverage
   - codecov
+  - coveralls
 notifications:
   email: false

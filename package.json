@@ -18,7 +18,7 @@
   "scripts": {
     "test": "mocha",
     "coverage": "nyc mocha",
-    "report-coverage": "nyc report --reporter=text-lcov | coveralls"
+    "report-coverage": "nyc --reporter=text-lcov > coverage.lcov mocha"
   },
   "keywords": [
     "currency",
