@@ -12,6 +12,5 @@ script:
 after_success:
   - npm run report-coverage
   - codecov
-  - coveralls
 notifications:
   email: false
