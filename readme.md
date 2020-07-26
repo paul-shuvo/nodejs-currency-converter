@@ -2,7 +2,7 @@
 <h1>NodeJS Currency Converter</h1>
 
 [![Build Status](https://travis-ci.com/paul-shuvo/nodejs-currency-converter.svg?branch=master)](https://travis-ci.com/paul-shuvo/nodejs-currency-converter) [![Known Vulnerabilities](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter?targetFile=package.json) [![codecov](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter)
- ![license: MIT](https://img.shields.io/npm/l/vue.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/b512e403dfc172ee3b0d/maintainability)](https://codeclimate.com/github/paul-shuvo/nodejs-currency-converter/maintainability)
+ ![license: MIT](https://img.shields.io/npm/l/vue.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/b512e403dfc172ee3b0d/maintainability)](https://codeclimate.com/github/paul-shuvo/nodejs-currency-converter/maintainability) [![npm version](https://badge.fury.io/js/currency-converter-lt.svg)](https://badge.fury.io/js/currency-converter-lt)
 <p>A minimal currency converter library for NodeJS that works out of the box.</p>
 </div>
 
