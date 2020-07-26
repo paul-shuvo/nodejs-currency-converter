@@ -16,7 +16,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc mocha",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov "
   },
   "keywords": [
     "currency",
