@@ -4,14 +4,14 @@
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
   "main": "index.js",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "got": "^11.5.1"
+    "cheerio": "^1.0.0-rc.5",
+    "got": "^11.8.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.0",
     "chai-as-promised": "^7.1.1",
-    "codecov": "^3.7.2",
-    "mocha": "^8.0.1",
+    "codecov": "^3.8.1",
+    "mocha": "^8.3.0",
     "nyc": "^15.1.0"
   },
   "scripts": {
