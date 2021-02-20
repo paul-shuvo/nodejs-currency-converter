@@ -1,6 +1,6 @@
 {
   "name": "currency-converter-lt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
   "main": "index.js",
   "dependencies": {
@@ -28,7 +28,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paul-shuvo/nodejs-currency-converter.git"
+    "url": "git://github.com/paul-shuvo/nodejs-currency-converter.git"
   },
   "bugs": {
     "url": "https://github.com/paul-shuvo/nodejs-currency-converter/issues"

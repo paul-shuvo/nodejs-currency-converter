@@ -26,7 +26,7 @@ yarn add currency-converter-lt
 
 ### Usage
 
-Import `nodejs-currency-converter`.
+Import `currency-converter-lt`.
 
 ```javascript
 const CC = require('currency-converter-lt')

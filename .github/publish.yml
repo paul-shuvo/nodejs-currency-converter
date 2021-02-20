@@ -1,0 +1,37 @@
+name: "🚀 release"
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Setup .npmrc file to publish to npm
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
+        # scope: '@paul-shuvo'
+    - run: |
+        sudo apt install jq 
+        echo $(jq '.name = "@paul-shuvo"+.name' package.json) > package.json
+        echo $(jq '.publishConfig.registry = "https://npm.pkg.github.com/paul-shuvo"' package.json) > package.json
+    - run: npm install
+    - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://npm.pkg.github.com'
+        # Defaults to the user or organization that owns the workflow file
+        scope: '@paul-shuvo'
+    - run: npm install
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
