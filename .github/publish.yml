@@ -15,10 +15,6 @@ jobs:
         node-version: '14.x'
         registry-url: 'https://registry.npmjs.org'
         # scope: '@paul-shuvo'
-    - run: |
-        sudo apt install jq 
-        echo $(jq '.name = "@paul-shuvo"+.name' package.json) > package.json
-        echo $(jq '.publishConfig.registry = "https://npm.pkg.github.com/paul-shuvo"' package.json) > package.json
     - run: npm install
     - run: npm publish --access public
       env:
@@ -31,6 +27,10 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
         # Defaults to the user or organization that owns the workflow file
         scope: '@paul-shuvo'
+    - run: |
+        sudo apt install jq 
+        echo $(jq '.name = "@paul-shuvo/nodejs-currency-converter"' package.json) > package.json
+        echo $(jq '.publishConfig.registry = "https://npm.pkg.github.com/paul-shuvo"' package.json) > package.json
     - run: npm install
     - run: npm publish
       env:
