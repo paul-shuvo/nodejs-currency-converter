@@ -118,3 +118,5 @@ dist
 coverage.lcov
 .nyc_output
 .nyc_output/
+
+.vscode

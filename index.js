@@ -214,6 +214,8 @@ class CurrencyConverter {
                 .then((html) => {return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
+                    if(rates.includes(","))
+                        rates = rates.replace(",", ".")
                     return parseFloat(rates)
             })
     }
@@ -250,8 +252,3 @@ class CurrencyConverter {
   }
 
 module.exports = CurrencyConverter
-// let cc = new CurrencyConverter()
-
-// // console.log(cc.currencies)
-// cc.from("USD").to("BDT").convert().then((t) =>console.log(t))
-// console.log(cc.currencyAmount)

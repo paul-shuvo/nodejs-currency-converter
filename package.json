@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
+    "currency-converter-lt": "^1.0.0",
     "got": "^11.8.1"
   },
   "devDependencies": {
