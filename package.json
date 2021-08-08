@@ -12,12 +12,14 @@
     "chai-as-promised": "latest",
     "codecov": "latest",
     "mocha": "latest",
-    "nyc": "latest"
+    "nyc": "latest",
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "test": "mocha",
     "coverage": "nyc mocha",
-    "report-coverage": "nyc --reporter=text-lcov > coverage.lcov mocha"
+    "report-coverage": "nyc --reporter=text-lcov > coverage.lcov mocha",
+    "prepublish": "tsc"
   },
   "keywords": [
     "currency",
