@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "cheerio": "latest",
+    "decimal.js": "latest",
     "got": "latest"
   },
   "devDependencies": {
