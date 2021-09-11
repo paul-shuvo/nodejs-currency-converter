@@ -1,5 +1,6 @@
 const cheerio = require("cheerio")
 const got = require("got")
+const decimal = require("decimal.js")
 
 // FIXME: round upto 2 decimal places
 // TODO: Add doc for other functions
@@ -235,7 +236,7 @@ class CurrencyConverter {
             throw new Error("currency amount should be a positive value")
 
         return this.rates().then((rates) =>{
-            this.convertedValue = rates * this.currencyAmount
+            this.convertedValue = new decimal(rates).mul(this.currencyAmount)
             return this.convertedValue
         })
     }
