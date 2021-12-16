@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ '12', '13', '14', '15', '16', '17' ]
     steps:
     # Setup .npmrc file to publish to npm
     - uses: actions/checkout@v2
