@@ -105,7 +105,7 @@ class CurrencyConverter {
         "PKR": "Pakistani Rupee",
         "PAB": "Panamanian Balboa",
         "PGK": "Papua New Guinean Kina",
-        "PYG ": "Paraguayan Guarani",
+        "PYG": "Paraguayan Guarani",
         "PHP": "Philippine peso",
         "PLN": "Poland Złoty",
         "GBP": "Pound sterling",
@@ -210,12 +210,12 @@ class CurrencyConverter {
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(1) })
         else    
-            return got(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
+            return got(`https://www.google.co.in/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
                 .then((html) => {return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
                     if(rates.includes(","))
-                        rates = rates.replace(",", ".")
+                        rates = rates.replace(",", "")
                     return parseFloat(rates)
             })
     }
