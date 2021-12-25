@@ -35,3 +35,10 @@ jobs:
     - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    - run: |
+        mkdir test-package
+        cd test-package
+        npm init -y
+        npm install --save currency-converter-lt
+        echo -e "const CC = require('currency-converter-lt')\nlet currencyConverter = new CC({from:'BTC', to:'ARK', amount:1})\ncurrencyConverter.convert().then((response) => {\nconsole.log(response) //or do something else\n})" >> index.js
+        node index.js
