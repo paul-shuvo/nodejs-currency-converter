@@ -6,7 +6,7 @@
 <p>A minimal currency converter library for NodeJS that works out of the box.</p>
 </div>
 
-
+__Announcement__ : For crypto currency conversion, check my other package [Nodejs Crypto Converter](https://github.com/paul-shuvo/nodejs-crypto-converter).
 
 ## Getting started
 
