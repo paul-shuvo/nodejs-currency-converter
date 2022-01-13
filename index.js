@@ -24,8 +24,7 @@ class CurrencyConverter {
         "BTN": "Bhutan currency",
         "BOB": "Bolivian Boliviano",
         "BAM": "Bosnia-Herzegovina Convertible Mark",
-        "BWP": "Botswanan Pula",
-        "BRL": "Brazilian Real",
+        "BWP": "Botswanan Pula", "BRL": "Brazilian Real",
         "BND": "Brunei Dollar",
         "BGN": "Bulgarian Lev",
         "BIF": "Burundian Fra nc",
@@ -208,10 +207,18 @@ class CurrencyConverter {
 
     rates(){
         if(this.currencyFrom === this.currencyTo)
-            return new Promise((resolve, _) => {resolve(1) })
+            return new Promise((resolve, _) => {resolve(this.currencyAmount) })
         else    
-            return got(`https://www.google.co.in/search?q=${this.currencyFrom}+to+${this.currencyTo}`)
-                .then((html) => {return cheerio.load(html.body)})
+            return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}`)
+                .then((html) => {
+		    // const fs = require('fs');
+
+		    // fs.writeFile("a.html", html.body, function(err) {
+		    // if(err) {
+			// return console.log(err);
+		    // }
+	    	    // console.log("The file was saved!")}) 
+		    return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
                     if(rates.includes(","))
@@ -235,7 +242,12 @@ class CurrencyConverter {
             throw new Error("currency amount should be a positive value")
 
         return this.rates().then((rates) =>{
-            this.convertedValue = rates * this.currencyAmount
+            // this.convertedValue = rates * this.currencyAmount
+
+	    // as the google result now sends the exact converted
+	    // currency, multiplying the rates with currencyAmount 
+	    // makes it redundant.
+	    this.convertedValue = rates * 1
             return this.convertedValue
         })
     }
