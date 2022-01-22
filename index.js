@@ -211,18 +211,19 @@ class CurrencyConverter {
         else    
             return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}`)
                 .then((html) => {
-		    // const fs = require('fs');
+		    const fs = require('fs');
 
-		    // fs.writeFile("a.html", html.body, function(err) {
-		    // if(err) {
-			// return console.log(err);
-		    // }
-	    	    // console.log("The file was saved!")}) 
+		    fs.writeFile("a.html", html.body, function(err) {
+		    if(err) {
+			return console.log(err);
+		    }
+	    	    console.log("The file was saved!")}) 
 		    return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
+			console.log(rates)
                     if(rates.includes(","))
-                        rates = rates.replace(",", "")
+                        rates = rates.replaceAll(",", "")
                     return parseFloat(rates)
             })
     }
