@@ -44,6 +44,13 @@ Or, with a json object
 let currencyConverter = new CC({from:"USD", to:"JPY", amount:100})
 ```
 
+#### <p style='color:magenta'>!!! Note: if you get incorrect conversion described in this [issue](https://github.com/paul-shuvo/nodejs-currency-converter/issues/20) then make sure you pass `isDecimalComma: true` to the constructor as following:</p>
+
+```javascript
+let currencyConverter = new CC({from:"USD", to:"JPY", amount:100, isDecimalComma:true})
+```
+
+
 The convert method will return the conversion based on the last conversion rate and can be used as a promise.
 
 ```javascript
