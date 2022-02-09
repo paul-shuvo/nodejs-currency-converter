@@ -23,6 +23,11 @@ describe("currencyConverter", () =>  {
             assert.equal(CC_.currencyFrom, "GBP")
         })
 
+        it("should instantiate an object with json object as a parameter with isDecimalComma", () =>  {
+            let CC_ = new CC({from:"GBP", to:"CAD", amount: 100, isDecimalComma: true})
+            assert.equal(CC_.currencyFrom, "GBP")
+        })
+
         it("should instantiate an object with json object with partial parameters", () =>  {
             let CC_ = new CC({from:"GBP", amount: 100})
             assert.equal(CC_.currencyFrom, "GBP")
@@ -98,9 +103,25 @@ describe("currencyConverter", () =>  {
         })
     })
 
+    describe("setDecimalComma", () => {
+        it("should be true", () => {
+            currencyConverter.setDecimalComma(true)
+            assert.equal(currencyConverter.isDecimalComma, true)
+        })
+
+        it("should throw TypeError", () =>  {
+            expect(() => currencyConverter.isDecimalComma("10")).to.throw(TypeError);
+        })
+    })
+
     describe("rates", () =>  {
         it("should not return undefined values", () => {
             currencyConverter.from("USD").to("JPY")
+            return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
+        })
+
+        it("should not return undefined values when isDecimalComma is true", () => {
+            currencyConverter.from("USD").to("JPY").setDecimalComma(true)
             return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
         })
     })

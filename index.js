@@ -161,6 +161,7 @@ class CurrencyConverter {
         this.currencyTo = ""
         this.currencyAmount = 1
         this.convertedValue = 0
+        this.isDecimalComma = false
 
         if(params != undefined){
             if(params["from"] !== undefined)
@@ -171,6 +172,9 @@ class CurrencyConverter {
             
             if(params["amount"] !== undefined)
                 this.amount(params["amount"])
+
+            if(params["isDecimalComma"] !== undefined)
+                this.setDecimalComma(params["isDecimalComma"])
         }
 
     }
@@ -205,6 +209,14 @@ class CurrencyConverter {
         return this
     }
 
+    setDecimalComma (isDecimalComma){
+        if(typeof isDecimalComma !== "boolean")
+            throw new TypeError("isDecimalComma should be a boolean")
+        
+        this.isDecimalComma = isDecimalComma
+        return this
+    }
+
     rates(){
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(this.currencyAmount) })
@@ -221,8 +233,17 @@ class CurrencyConverter {
 		    return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
-                    if(rates.includes(","))
-                        rates = rates.replaceAll(",", "")
+                    if(this.isDecimalComma){
+                        if(rates.includes("."))
+                            rates = rates.replaceAll(".", "")
+                        if(rates.includes(","))
+                            rates = rates.replaceAll(",", ".")
+                    }
+                    else{
+                        if(rates.includes(","))
+                            rates = rates.replaceAll(",", "")
+                    }
+
                     return parseFloat(rates)
             })
     }
