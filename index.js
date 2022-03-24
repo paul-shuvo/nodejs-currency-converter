@@ -221,7 +221,7 @@ class CurrencyConverter {
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(this.currencyAmount) })
         else    
-            return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}`)
+            return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}+&hl=en`)
                 .then((html) => {
 		    // const fs = require('fs');
 
