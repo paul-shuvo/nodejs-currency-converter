@@ -1,8 +1,6 @@
 const cheerio = require("cheerio")
 const got = require("got")
 
-// FIXME: round upto 2 decimal places
-// TODO: Add doc for other functions
 class CurrencyConverter {
     currencies = {
         "AFN": "Afghan Afghani",
@@ -176,7 +174,6 @@ class CurrencyConverter {
             if(params["isDecimalComma"] !== undefined)
                 this.setDecimalComma(params["isDecimalComma"])
         }
-
     }
     from (currencyFrom) {
         if(typeof currencyFrom !== "string")
@@ -236,14 +233,7 @@ class CurrencyConverter {
         else    
             return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}+&hl=en`)
                 .then((html) => {
-		    // const fs = require('fs');
-
-		    // fs.writeFile("a.html", html.body, function(err) {
-		    // if(err) {
-			// return console.log(err);
-		    // }
-	    	    // console.log("The file was saved!")}) 
-		    return cheerio.load(html.body)})
+	                return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
                 .then((rates) => {
                     if(this.isDecimalComma){
