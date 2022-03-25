@@ -114,6 +114,20 @@ describe("currencyConverter", () =>  {
         })
     })
 
+    describe("replaceAll", () => {
+        it("should replace all the , with empty space", () => {
+            assert.equal(currencyConverter.replaceAll("123,456,789.50", ",", ""), "123456789.50")
+        })
+
+        it("should replace all the , with empty .", () => {
+            assert.equal(currencyConverter.replaceAll("123456789,50", ",", "."), "123456789.50")
+        })
+
+        it("should replace all the . with empty space", () => {
+            assert.equal(currencyConverter.replaceAll("123.456.789", ".", ""), "123456789")
+        })
+    })
+
     describe("rates", () =>  {
         it("should not return undefined values", () => {
             currencyConverter.from("USD").to("JPY")

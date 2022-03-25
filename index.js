@@ -217,6 +217,19 @@ class CurrencyConverter {
         return this
     }
 
+    replaceAll(text, queryString, replaceString) {
+        let text_ = ""
+        for (let i = 0; i < text.length; i++) {
+            if (text[i] === queryString){
+                text_ += replaceString
+            }
+            else{
+                text_ += text[i]
+            }
+        }
+        return text_
+    }
+
     rates(){
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(this.currencyAmount) })
@@ -235,13 +248,13 @@ class CurrencyConverter {
                 .then((rates) => {
                     if(this.isDecimalComma){
                         if(rates.includes("."))
-                            rates = rates.replaceAll(".", "")
+                            rates = this.replaceAll(rates, ".", "")
                         if(rates.includes(","))
-                            rates = rates.replaceAll(",", ".")
+                            rates = this.replaceAll(rates, ",", ".")
                     }
                     else{
                         if(rates.includes(","))
-                            rates = rates.replaceAll(",", "")
+                            rates = this.replaceAll(rates, ",", "")
                     }
 
                     return parseFloat(rates)
