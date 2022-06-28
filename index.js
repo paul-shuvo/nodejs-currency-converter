@@ -159,7 +159,9 @@ class CurrencyConverter {
         this.currencyTo = ""
         this.currencyAmount = 1
         this.convertedValue = 0
-        this.isDecimalComma = false
+        this.isDecimalComma = false;
+        this.isRatesCaching = false;
+        this.ratesCacheDuration = 0;
         this.ratesCache = {};
 
         if(params != undefined){
@@ -228,13 +230,41 @@ class CurrencyConverter {
         return text_
     }
 
+    setupRatesCache(ratesCacheOptions) {
+        if (typeof ratesCacheOptions != "object")
+            throw new TypeError("ratesCacheOptions should be an object")
+
+        if (ratesCacheOptions.isRatesCaching === undefined)
+            throw new Error(`ratesCacheOptions should have a property called isRatesCaching`)
+
+        if (typeof ratesCacheOptions.isRatesCaching != "boolean")
+            throw new TypeError("ratesCacheOptions.isRatesCaching should be a boolean")
+
+        if (typeof ratesCacheOptions.ratesCacheDuration != "number")
+            throw new TypeError("ratesCacheOptions.ratesCacheDuration should be a number")
+
+        if(ratesCacheOptions.ratesCacheDuration <= 0)
+            throw new Error("ratesCacheOptions.ratesCacheDuration should be a positive number of seconds")
+
+        this.isRatesCaching = ratesCacheOptions.isRatesCaching;
+
+        if (ratesCacheOptions.ratesCacheDuration === undefined)
+            this.ratesCacheDuration = 3600000; // Defaults to 3600 seconds (1 hour)
+        else
+            this.ratesCacheDuration = ratesCacheOptions.ratesCacheDuration * 1000;
+
+        return this
+    }
+
     rates(){
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(this.currencyAmount) })
         else
             let currencyPair = this.currencyFrom.toUpperCase() + this.currencyTo.toUpperCase();
             if (currencyPair in this.ratesCache)
-                return this.ratesCache[currencyPair];
+            return new Promise((resolve, _) => {
+                resolve(this.ratesCache[currencyPair]);
+            });
             else
                 return got(`https://www.google.co.in/search?q=${this.currencyFrom}+to+${this.currencyTo}+&hl=en`)
                     .then((html) => {
@@ -251,8 +281,10 @@ class CurrencyConverter {
                             if(rates.includes(","))
                                 rates = this.replaceAll(rates, ",", "")
                         }
-                        this.ratesCache[currencyPair] = parseFloat(rates);
-                        this.removeCurrencyPairFromRatesCache(currencyPair);
+                        if (this.isRatesCaching) {
+                            this.ratesCache[currencyPair] = parseFloat(rates);
+                            this.removeCurrencyPairFromRatesCache(currencyPair);
+                        }
                         return parseFloat(rates)
                 })
     }
@@ -296,7 +328,7 @@ class CurrencyConverter {
         // Deletes cached currencyPair rate an hour later
         setTimeout(function() {
             delete this.ratesCache[currencyPair];
-        }, 3600000);
+        }, this.ratesCacheDuration);
     }
   }
 
