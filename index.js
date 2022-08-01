@@ -307,11 +307,6 @@ class CurrencyConverter {
 
         return this.rates().then((rates) =>{
             this.convertedValue = rates * this.currencyAmount
-
-	    // as the google result now sends the exact converted
-	    // currency, multiplying the rates with currencyAmount
-	    // makes it redundant.
-	    // this.convertedValue = rates * 1
             return this.convertedValue
         })
     }
