@@ -257,15 +257,15 @@ class CurrencyConverter {
     }
 
     rates(){
-        if(this.currencyFrom === this.currencyTo)
-            return new Promise((resolve, _) => {resolve(this.currencyAmount) })
-        else
+        if (this.currencyFrom === this.currencyTo) {
+            return new Promise((resolve, _) => {resolve(1) })
+        } else {
             let currencyPair = this.currencyFrom.toUpperCase() + this.currencyTo.toUpperCase();
-            if (currencyPair in this.ratesCache)
-            return new Promise((resolve, _) => {
-                resolve(this.ratesCache[currencyPair]);
-            });
-            else
+            if (currencyPair in this.ratesCache) {
+                return new Promise((resolve, _) => {
+                    resolve(this.ratesCache[currencyPair]);
+                });
+            } else {
                 return got(`https://www.google.co.in/search?q=${this.currencyFrom}+to+${this.currencyTo}+&hl=en`)
                     .then((html) => {
     	                return cheerio.load(html.body)})
@@ -287,10 +287,12 @@ class CurrencyConverter {
                         }
                         return parseFloat(rates)
                 })
+            }
+        }
     }
 
     convert(currencyAmount){
-        if(currencyAmount !== undefined){
+        if (currencyAmount !== undefined){
             this.amount(currencyAmount)
         }
 
