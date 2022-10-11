@@ -168,7 +168,7 @@ class CurrencyConverter {
 
             if(params["to"] !== undefined)
                 this.to(params["to"])
-
+            
             if(params["amount"] !== undefined)
                 this.amount(params["amount"])
 
@@ -179,7 +179,7 @@ class CurrencyConverter {
     from (currencyFrom) {
         if(typeof currencyFrom !== "string")
             throw new TypeError("currency code should be a string")
-
+            
         if(!this.currencyCode.includes(currencyFrom.toUpperCase()))
             throw new Error(`${currencyFrom} is not a valid currency code`)
 
@@ -202,7 +202,7 @@ class CurrencyConverter {
 
         if(currencyAmount <= 0)
             throw new Error("amount should be a positive number")
-
+            
         this.currencyAmount = currencyAmount
         return this
     }
@@ -210,7 +210,7 @@ class CurrencyConverter {
     setDecimalComma (isDecimalComma){
         if(typeof isDecimalComma !== "boolean")
             throw new TypeError("isDecimalComma should be a boolean")
-
+        
         this.isDecimalComma = isDecimalComma
         return this
     }
@@ -231,13 +231,12 @@ class CurrencyConverter {
     rates(){
         if(this.currencyFrom === this.currencyTo)
             return new Promise((resolve, _) => {resolve(this.currencyAmount) })
-        else
+        else    
             return got(`https://www.google.co.in/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}+&hl=en`)
                 .then((html) => {
 	                return cheerio.load(html.body)})
                 .then(($) => {return $(".iBp4i").text().split(" ")[0]})
-            .then((rates) => {
-                console.log('b', rates);
+                .then((rates) => {
                     if(this.isDecimalComma){
                         if(rates.includes("."))
                             rates = this.replaceAll(rates, ".", "")
@@ -268,13 +267,12 @@ class CurrencyConverter {
             throw new Error("currency amount should be a positive value")
 
         return this.rates().then((rates) =>{
-            console.log('a', rates);
             // this.convertedValue = rates * this.currencyAmount
 
-	        // as the google result now sends the exact converted
-	        // currency, multiplying the rates with currencyAmount
-	        // makes it redundant.
-	        this.convertedValue = rates * 1
+	    // as the google result now sends the exact converted
+	    // currency, multiplying the rates with currencyAmount 
+	    // makes it redundant.
+	    this.convertedValue = rates * 1
             return this.convertedValue
         })
     }
@@ -282,7 +280,7 @@ class CurrencyConverter {
     currencyName(currencyCode_){
         if(typeof currencyCode_ != "string")
             throw new TypeError("currency code should be a string")
-
+        
         if(!this.currencyCode.includes(currencyCode_.toUpperCase()))
             throw new Error(`${currencyCode_} is not a valid currency code`)
 
