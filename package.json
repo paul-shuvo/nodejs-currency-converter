@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "cheerio": "latest",
-    "got": "11.8.2"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "chai": "latest",
