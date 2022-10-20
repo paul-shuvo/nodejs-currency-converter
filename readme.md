@@ -1,10 +1,13 @@
 <div align="center">
 <h1>NodeJS Currency Converter</h1>
 
-[![Build Status](https://github.com/paul-shuvo/nodejs-currency-converter/actions/workflows/test/badge.svg)](https://travis-ci.com/paul-shuvo/nodejs-currency-converter) [![Known Vulnerabilities](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter?targetFile=package.json)  ![supported node versions](https://img.shields.io/badge/node%20v-12.x%20%7C%2013.x%20%7C%2014.x%20%7C%2015.x%20%7C%2016.x%20%7C%2017.x-blue) [![codecov](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter)
+![test](https://github.com/paul-shuvo/nodejs-currency-converter/actions/workflows/test.yml/badge.svg) [![Known Vulnerabilities](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter/badge.svg?targetFile=package.json)](https://snyk.io/test/github/paul-shuvo/nodejs-currency-converter?targetFile=package.json)  ![supported node versions](https://img.shields.io/badge/node%20v-12.x%20%7C%2013.x%20%7C%2014.x%20%7C%2015.x%20%7C%2016.x%20%7C%2017.x-blue) [![codecov](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/paul-shuvo/nodejs-currency-converter)
  ![license: MIT](https://img.shields.io/npm/l/vue.svg) [![Maintainability](https://api.codeclimate.com/v1/badges/b512e403dfc172ee3b0d/maintainability)](https://codeclimate.com/github/paul-shuvo/nodejs-currency-converter/maintainability) [![npm version](https://badge.fury.io/js/currency-converter-lt.svg)](https://badge.fury.io/js/currency-converter-lt) ![npm](https://img.shields.io/npm/dm/currency-converter-lt)
 <p>A minimal currency converter library for NodeJS that works out of the box.</p>
 </div>
+
+
+<!-- ![test](https://github.com/paul-shuvo/nodejs-currency-converter/actions/workflows/codecov.yml/badge.svg) -->
 
 __Announcement__ : For crypto currency conversion, check my other package [Nodejs Crypto Converter](https://github.com/paul-shuvo/nodejs-crypto-converter).
 
