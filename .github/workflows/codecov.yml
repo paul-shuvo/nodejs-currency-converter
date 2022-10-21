@@ -5,14 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set up Node 18
-        uses: actions/setup-node@v3
+      #   uses: actions/checkout@v2
+      # - name: Set up Node 18
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
+      # - name: Install dependencies
+      #   run: npm install
+      # - name: Run tests and collect coverage
+      #   run: npm run test -- --coverage
+      # steps:
+      - uses: actions/checkout@v3
+      - name: Code coverage-reporter
+        uses: tj-actions/coverage-reporter@v5.1
         with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests and collect coverage
-        run: npm run test -- --coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+          coverage-command: "nyc --reporter=text mocha --exclude='fixtures' __tests__/*.js"
