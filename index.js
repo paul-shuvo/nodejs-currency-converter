@@ -277,8 +277,8 @@ class CurrencyConverter {
                 resolve(body);
               }
             });
-          }).then((html) => {
-            return cheerio.load(html.body)
+          }).then((body) => {
+            return cheerio.load(body)
           })
           .then(($) => {
             return $(".iBp4i").text().split(" ")[0]
