@@ -214,6 +214,26 @@ describe("currencyConverter", () =>  {
             expect(() => currencyConverter.setupRatesCache(ratesCacheOptions)).to.throw(Error);
         })
     })
+
+    describe("addRateToRatesCache", () =>  {
+        it("should throw an error", () => {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: 3600
+            }
+            currencyConverter.setupRatesCache(ratesCacheOptions);
+            expect(() => currencyConverter.addRateToRatesCache("USDCAD", "0.31")).to.throw(Error);
+        })
+
+        it("should throw an error", () => {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: 3600
+            }
+            currencyConverter.setupRatesCache(ratesCacheOptions);
+            expect(() => currencyConverter.addRateToRatesCache(100, "0.31")).to.throw(Error);
+        })
+    })
 })
 
 // console.log(cf)
