@@ -17,7 +17,7 @@ describe("currencyConverter", () =>  {
             let CC_ = new CC()
             assert.equal(CC_.currencyFrom, "")
         })
-    
+
         it("should instantiate an object with json object as a parameter", () =>  {
             let CC_ = new CC({from:"GBP", to:"CAD", amount: 100})
             assert.equal(CC_.currencyFrom, "GBP")
@@ -176,6 +176,62 @@ describe("currencyConverter", () =>  {
 
         it("should throw an Error", () =>  {
             expect(() => currencyConverter.currencyName("DDD")).to.throw(Error);
+        })
+    })
+
+    describe("setupRatesCache", () =>  {
+        it("should throw a TypeError", () =>  {
+            expect(() => currencyConverter.setupRatesCache(5)).to.throw(TypeError);
+        })
+
+        it("should throw a TypeError", () =>  {
+            let ratesCacheOptions = {
+                isRatesCaching: 3
+            }
+            expect(() => currencyConverter.setupRatesCache(ratesCacheOptions)).to.throw(TypeError);
+        })
+
+        it("should throw a TypeError", () =>  {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: "10"
+            }
+            expect(() => currencyConverter.setupRatesCache(ratesCacheOptions)).to.throw(TypeError);
+        })
+
+        it("should throw an Error", () =>  {
+            let ratesCacheOptions = {
+                ratesCacheDuration: 50
+            }
+            expect(() => currencyConverter.setupRatesCache(ratesCacheOptions)).to.throw(Error);
+        })
+
+        it("should throw an Error", () =>  {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: -50
+            }
+            expect(() => currencyConverter.setupRatesCache(ratesCacheOptions)).to.throw(Error);
+        })
+    })
+
+    describe("addRateToRatesCache", () =>  {
+        it("should throw an error", () => {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: 3600
+            }
+            currencyConverter.setupRatesCache(ratesCacheOptions);
+            expect(() => currencyConverter.addRateToRatesCache("USDCAD", "0.31")).to.throw(Error);
+        })
+
+        it("should throw an error", () => {
+            let ratesCacheOptions = {
+                isRatesCaching: true,
+                ratesCacheDuration: 3600
+            }
+            currencyConverter.setupRatesCache(ratesCacheOptions);
+            expect(() => currencyConverter.addRateToRatesCache(100, "0.31")).to.throw(Error);
         })
     })
 })
