@@ -11,6 +11,10 @@
 
 __Announcement__ : For crypto currency conversion, check my other package [Nodejs Crypto Converter](https://github.com/paul-shuvo/nodejs-crypto-converter).
 
+### Typescript Support
+
+Check out this [comment](https://github.com/paul-shuvo/nodejs-currency-converter/issues/35#issuecomment-1407626126)
+
 ## Getting started
 
 ### Installation
