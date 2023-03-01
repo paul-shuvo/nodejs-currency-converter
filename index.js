@@ -270,7 +270,7 @@ class CurrencyConverter {
         });
       } else {
         return new Promise((resolve, reject) => {
-            request(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}+&hl=en`, function(error, response, body) {
+            request(`https://142.250.72.228/search?q=${this.currencyFrom}+to+${this.currencyTo}+&hl=en`, function(error, response, body) {
               if (error) {
                 return reject(error);
               } else {
