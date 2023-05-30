@@ -1,8 +1,9 @@
 {
   "name": "currency-converter-lt",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
   "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "cheerio": "latest",
     "request": "^2.88.2"
