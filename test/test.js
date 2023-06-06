@@ -134,6 +134,21 @@ describe("currencyConverter", () =>  {
             return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
         })
 
+        it("should not return undefined values for CF", () => {
+            currencyConverter.from("CF").to("JPY")
+            return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
+        })
+
+        it("should not return undefined values for CHF", () => {
+            currencyConverter.from("USD").to("CHF")
+            return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
+        })
+
+        it("should not return undefined values for KMF", () => {
+            currencyConverter.from("KMF").to("USD")
+            return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
+        })
+
         it("should not return undefined values when isDecimalComma is true", () => {
             currencyConverter.from("USD").to("JPY").setDecimalComma(true)
             return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
