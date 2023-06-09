@@ -134,6 +134,11 @@ describe("currencyConverter", () =>  {
             return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
         })
 
+        it('should not return undefined values for MNT', () => {
+			currencyConverter.from('MNT').to('USD');
+			return expect(currencyConverter.rates()).to.eventually.not.equal(undefined);
+		});
+
         it("should not return undefined values when isDecimalComma is true", () => {
             currencyConverter.from("USD").to("JPY").setDecimalComma(true)
             return expect(currencyConverter.rates()).to.eventually.not.equal(undefined)
