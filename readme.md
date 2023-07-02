@@ -77,7 +77,7 @@ currencyConverter.rates().then((response) => {
 
 Rates can be cached for currency pairs. To implement rate caching, instantiate an object of CurrencyConverter only once in your project, in a CurrencyConverter file, and setup rates caching then import the instance of CurrencyConverter from the CurrencyConverter file in your project across the rest of your project. Use chaining to convert currencies when caching is implemented. Below is an example of a CurrencyConverter file.
 
-Note: Rates are not actually deleted after the ratesCacheDuration. The rate remains in the rates cache of the CurrencyConverter object until a request is made for the same currency pair at which point, the old rate is overwritten.
+Note: Rates are not actually deleted after the ratesCacheDuration. The rate remains in the rates cache of the CurrencyConverter object until a request is made for the same currency pair after the rates cache duration has been exceeded at which point, the old rate is overwritten.
 
 ```javascript
 const CC = require('currency-converter-lt')
