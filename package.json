@@ -1,6 +1,6 @@
 {
   "name": "currency-converter-lt",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
   "main": "index.js",
   "dependencies": {

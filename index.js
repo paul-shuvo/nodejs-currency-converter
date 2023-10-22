@@ -271,7 +271,7 @@ class CurrencyConverter {
         });
       } else {
         return new Promise((resolve, reject) => {
-            request(`https://www.google.com/search?q=${this.currencyFrom}+to+${this.currencyTo}+&hl=en`, function(error, response, body) {
+            request(`https://www.google.com/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}+&hl=en`, function(error, response, body) {
               if (error) {
                 return reject(error);
               } else {
@@ -294,10 +294,11 @@ class CurrencyConverter {
               if (rates.includes(","))
                 rates = this.replaceAll(rates, ",", "")
             }
+            rates = parseFloat(rates) / this.currencyAmount
             if (this.isRatesCaching) {
-              this.addRateToRatesCache(currencyPair, parseFloat(rates));
+              this.addRateToRatesCache(currencyPair, rates);
             }
-            return parseFloat(rates)
+            return rates
           })
       }
     }
