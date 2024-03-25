@@ -35,8 +35,7 @@ class CurrencyConverter {
         "FCFA": "Central African CFA Franc",
         "CLP": "Chilean Peso",
         "CLF": "Chilean Unit of Account (UF)",
-        "CNY": "Chinese Yuan",
-        "CNY": "Chinese Yuan (offshore)",
+        "CNY": ["Chinese Yuan", "Chinese Yuan (offshore)"],
         "COP": "Colombian Peso",
         "KMF": "Comorian Franc",
         "CDF": "Congolese Franc",
@@ -294,11 +293,11 @@ class CurrencyConverter {
               if (rates.includes(","))
                 rates = this.replaceAll(rates, ",", "")
             }
-            rates = parseFloat(rates) / this.currencyAmount
+            const rates_number = rates = parseFloat(rates) / this.currencyAmount
             if (this.isRatesCaching) {
-              this.addRateToRatesCache(currencyPair, rates);
+              this.addRateToRatesCache(currencyPair, rates_number);
             }
-            return rates
+            return rates_number;
           })
       }
     }
