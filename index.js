@@ -272,7 +272,7 @@ class CurrencyConverter {
         });
       } else {
         return new Promise((resolve, reject) => {
-            request(`https://www.google.com/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}+&hl=en`, function(error, response, body) {
+            request(`https://www.google.com/search?q=${this.currencyAmount}+${this.currencyFrom}+to+${this.currencyTo}&hl=en&gl=US`, function(error, response, body) {
               if (error) {
                 return reject(error);
               } else {
