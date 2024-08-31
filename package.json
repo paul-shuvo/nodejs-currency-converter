@@ -4,7 +4,7 @@
   "description": "A nodejs currency converter library that doesn't require subscribing to any API calls.",
   "main": "index.js",
   "dependencies": {
-    "cheerio": "latest",
+    "cheerio": "1.0.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
